@@ -22,9 +22,8 @@
         </div>
       </div>
       <div class="btn-next-pver">
-        <button class="but pver">
-          << /button>
-            <button class="but next">></button>
+        <button class="but pver"><i class="bi bi-caret-left"></i></button>
+        <button class="but next"><i class="bi bi-caret-right"></i></button>
       </div>
     </div>
 
@@ -38,9 +37,9 @@
             <ul class="nav flex-column widget-list-items">
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget1.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget1.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Tablet Thin EliteBook Revolve 810 G6
@@ -54,9 +53,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget2.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget2.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Notebook Widescreen Z51-70 40K6013UPB
@@ -71,9 +70,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget3.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget3.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">Smartphone 6S 128GB LTE</div>
                     <div class="star-rating">
@@ -96,9 +95,9 @@
             <ul class="nav flex-column widget-list-items">
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget4.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget4.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Game Console Controller + USB 3.0 Cable
@@ -112,9 +111,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget5.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget5.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Wireless Audio System Multiroom 360
@@ -128,9 +127,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget6.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget6.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Tablet Red EliteBook Revolve 810 G2
@@ -155,9 +154,9 @@
             <ul class="nav flex-column widget-list-items">
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget7.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget7.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">Powerbank 1130 mAh Blue</div>
                     <div class="star-rating">
@@ -172,9 +171,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget8.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget8.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">
                       Notebook Black Spire V Nitro VN7-591G
@@ -191,9 +190,9 @@
               </li>
               <li class="item">
                 <a href="#">
-                <div class="item-img">
-                  <img src="<?= $img_path; ?>widget9.png" alt="" />
-                </div>  
+                  <div class="item-img">
+                    <img src="<?= $img_path; ?>widget9.png" alt="" />
+                  </div>
                   <div class="info">
                     <div class="title">Smartphone 6S 128GB LTE</div>
                     <div class="star-rating">

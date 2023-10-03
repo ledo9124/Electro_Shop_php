@@ -123,12 +123,6 @@ nextPverItem(
   ".home-body .home-product.id2 .list-products .item"
 );
 
-nextPverItem(
-  ".home-body .home-product.id3 .btn-next-pver button",
-  ".home-body .home-product.id3 .list-products",
-  ".home-body .home-product.id3 .list-products .item"
-);
-
 // While scroll web
 const header = document.querySelector("header");
 

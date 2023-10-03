@@ -7,14 +7,19 @@
                     <p class="mb-0">Category</p>
                 </div>
                 <ul class="list-categories">
-                    <!-- <li><a href="#">Computers & Accessories</a></li>
-                    <li><a href="#">Cameras, Audio & Video</a></li>
-                    <li><a href="#">Mobiles & Tablets</a></li>
-                    <li><a href="#">Movies, Music & Video Games</a></li>
-                    <li><a href="#">TV & Audio</a></li>
-                    <li><a href="#">Watches & Eyewear</a></li>
-                    <li><a href="#">Car & Motorbike</a></li>
-                    <li><a href="#">Accessories</a></li> -->
+
+                    <?php 
+                        foreach ($listCategories as $category) {
+                            extract($category);
+                            $linkdm="index.php?act=shop-page&category_id=".$category_id;
+                            echo '
+                                <li><a href="'.$linkdm.'">'.$category_name.'</a></li>
+                            ';
+                        }
+                    ?>
+
+                    <!-- <li><a href="#">Computers & Accessories</a></li> -->
+                    
                 </ul>
             </aside>
 

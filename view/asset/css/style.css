@@ -1147,8 +1147,9 @@ footer .copyright-bar {
 
 .home-body-inner .list-cards img {
   position: absolute;
-  left: 6%;
+  left: 30px;
   top: -55%;
+  width: 120px;
   transition: all 0.2s ease-in;
 }
 
@@ -1936,6 +1937,7 @@ footer .copyright-bar {
 }
 
 .shop-page .shop-products .item .item-name {
+  min-height: 45px;
   font-size: 15px;
   font-weight: bold;
   color: var(--color-title-2);

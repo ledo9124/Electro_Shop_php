@@ -107,8 +107,8 @@
               <ul
                 class="col-auto nav justify-content-center align-items-center menu-main"
               >
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php?act=shop-page">Shop</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
               </ul>
