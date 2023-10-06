@@ -28,6 +28,7 @@
 
                 include './view/shop-page.php';
                 break;
+
             case 'product-page':
                 $new_5_product = loadall_product_new(5);
                 if (isset($_GET['idsp'])) {
@@ -45,6 +46,8 @@
 
                 include './view/product-page.php';
                 break;
+
+            
         }
 
     } else {

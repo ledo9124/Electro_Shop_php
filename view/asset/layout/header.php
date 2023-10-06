@@ -168,10 +168,14 @@
               <div
                 class="col nav align-items-center justify-content-between account-login"
               >
-                <button class="signIn">
-                  <span class="box"> Sign In </span>
-                </button>
-                <button class="button SignUp">Sign Up</button>
+                <a href="./view/login/sign-in.php">
+                  <button class="signIn">
+                    <span class="box"> Sign In </span>
+                  </button>
+                </a>
+                <a href="./view/login/register.php">
+                  <button class="button SignUp">Sign Up</button>
+                </a>
               </div>
             </div>
           </div>
