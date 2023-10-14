@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="shop-media-sidebar mt-4 mb-4">
-                    <img src="./asset/image/shop-sidebar-ad-banner.jpg" alt="" class="img-fluid" />
+                    <img src="<?=$img_path;?>shop-sidebar-ad-banner.jpg" alt="" class="img-fluid" />
                 </div>
 
                 <div class="shop-widget-latest-woocommerce">

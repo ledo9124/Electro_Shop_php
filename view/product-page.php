@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="shop-media-sidebar mt-4 mb-4">
-                    <img src="./asset/image/shop-sidebar-ad-banner.jpg" alt="" class="img-fluid" />
+                    <img src="<?=$img_path;?>shop-sidebar-ad-banner.jpg" alt="" class="img-fluid" />
                 </div>
 
                 <div class="shop-widget-latest-woocommerce">
@@ -113,6 +113,8 @@
                             $row .= '<li>'.$des.'</li>';
                         }
 
+
+
                         echo '
                             <div class="col-5 product-img">
                                 <img src="'.$img.'" alt="'.$product_name.'" />
@@ -125,7 +127,7 @@
                                     <div class="star-rating">
                                         <img src="'.$img_path.'star-rating.png" alt="" />
                                     </div>
-                                    <a href="#reviews" class="review-rating-count">( 2 customer reviews)</a>
+                                    <a href="#reviews" class="review-rating-count">( '.(isset($list_comments) ? count($list_comments) : '0').' customer reviews)</a>
                                 </div>
                                 <div class="product-action-btn">
                                     <a href="#">
@@ -180,72 +182,6 @@
                         
                     ?>
 
-                    <!-- <div class="col-5 product-img">
-                        <img src="./asset/image/product-smartphone-1.png" alt="" />
-                    </div>
-
-                    <div class="col-7 product-info">
-                        <div class="product-band">Headerphones</div>
-                        <div class="product-name">Smartphone 6S 32GB LTE</div>
-                        <div class="product-rating border-bottom pb-2">
-                            <div class="star-rating">
-                                <img src="./asset/image/star-rating.png" alt="" />
-                            </div>
-                            <a href="#reviews" class="review-rating-count">( 2 customer reviews)</a>
-                        </div>
-                        <div class="product-action-btn">
-                            <a href="#">
-                                <i class="bi bi-heart"></i>
-                                <span>Wishlist</span>
-                            </a>
-                            <a href="#">
-                                <i class="bi bi-arrow-repeat"></i>
-                                <span>Compare</span>
-                            </a>
-                        </div>
-                        <div class="product-details-short">
-                            <ul>
-                                <li>Active noise cancellation for immersive sound</li>
-                                <li>
-                                    Three sizes of soft, tapered silicone tips for a
-                                    customisable fit
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-price">
-                            <p>$799.00</p>
-                        </div>
-                        <form action="" class="product-cart">
-                            <input type="number" value="1" />
-                            <div class="btn btn-success">
-                                Pay with
-                                <span> link </span>
-                                <svg class="InlineSVG LinkButton-arrow" focusable="false" width="21" height="14"
-                                    viewBox="0 0 21 14" fill="none">
-                                    <path
-                                        d="M14.5247 0.219442C14.2317 -0.0733252 13.7568 -0.0731212 13.4641 0.219898C13.1713 0.512917 13.1715 0.98779 13.4645 1.28056L18.5 6.5L19 7L18.5 7.75C18 8.5 13.4645 12.7194 13.4645 12.7194C13.1715 13.0122 13.1713 13.4871 13.4641 13.7801C13.7568 14.0731 14.2317 14.0733 14.5247 13.7806L20.7801 7.53056C20.9209 7.38989 21 7.19902 21 7C21 6.80098 20.9209 6.61011 20.7801 6.46944L14.5247 0.219442Z"
-                                        fill="#1D3944"></path>
-                                    <path d="M14 4L4 4" stroke="#1D3944" stroke-width="1.5" stroke-linecap="round">
-                                    </path>
-                                    <path d="M14 4V1" stroke="#1D3944" stroke-width="1.5" stroke-linecap="round"></path>
-                                    <path d="M14 13V10" stroke="#1D3944" stroke-width="1.5" stroke-linecap="round">
-                                    </path>
-                                    <path
-                                        d="M4 9.25C3.58579 9.25 3.25 9.58579 3.25 10C3.25 10.4142 3.58579 10.75 4 10.75V9.25ZM14 9.25H4V10.75H14V9.25Z"
-                                        fill="#1D3944"></path>
-                                    <path
-                                        d="M1.00007 6.25C0.585853 6.24996 0.250037 6.58572 0.25 6.99993C0.249963 7.41415 0.58572 7.74996 0.999934 7.75L1.00007 6.25ZM14.0001 6.25115L1.00007 6.25L0.999934 7.75L13.9999 7.75115L14.0001 6.25115Z"
-                                        fill="#1D3944"></path>
-                                </svg>
-                            </div>
-
-                            <p class="wc-stripe-payment-request-separator">— OR —</p>
-
-                            <a href="#" class="btn btn-warning">
-                                <i class="bi bi-cart-plus"></i>
-                                <span>Add to Cart</span>
-                            </a>
-                        </form> -->
                     </div>
                 </div>
 
@@ -360,33 +296,36 @@
                             <div class="col-6 review-form">
                                 <div class="review-title">Add a review</div>
 
-                                <form action="" class="comment-form">
-                                    <div class="comment-form-rating">
+                                <form action="index.php?act=product-page" method="post" id="comment-form" class="comment-form">
+                                    <input type="hidden" name="product_id" value="<?=$product_sigle['product_id']?>">    
+                                    <input type="hidden" name="client_id" value="<?=$product_sigle['product_id']?>">    
+
+                                    <div class="form-group comment-form-rating">
                                         <div class="title">Your Rating</div>
 
                                         <div class="rating">
-                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <input rules="required" checked type="radio" id="star5" name="rating" value="5" />
                                             <label for="star5"></label>
-                                            <input type="radio" id="star4" name="rating" value="4" />
+                                            <input rules="required" type="radio" id="star4" name="rating" value="4" />
                                             <label for="star4"></label>
-                                            <input type="radio" id="star3" name="rating" value="3" />
+                                            <input rules="required" type="radio" id="star3" name="rating" value="3" />
                                             <label for="star3"></label>
-                                            <input type="radio" id="star2" name="rating" value="2" />
+                                            <input rules="required" type="radio" id="star2" name="rating" value="2" />
                                             <label for="star2"></label>
-                                            <input type="radio" id="star1" name="rating" value="1" />
+                                            <input rules="required" type="radio" id="star1" name="rating" value="1" />
                                             <label for="star1"></label>
                                         </div>
+                                        <span class="form-message"></span>
 
-                                        <input type="hidden" name="star-rating" />
                                     </div>
 
-                                    <div class="comment-form-comment">
+                                    <div class="form-group comment-form-comment">
                                         <div class="title">Your Review</div>
-
-                                        <textarea name="comment" cols="45" rows="2" required="true"></textarea>
+                                        <textarea name="comment" cols="45" rows="2" rules="required"></textarea>
+                                        <span class="form-message"></span>
                                     </div>
 
-                                    <input type="submit" value="Add Review" />
+                                    <input type="submit" name="submit" value="Add Review" />
                                 </form>
                             </div>
                         </div>
@@ -533,3 +472,7 @@
         </div>
     </div>
 </div>
+<script src="./view/asset/js/validator2_0.js"></script>
+<script>
+    Validator('#comment-form');
+</script>

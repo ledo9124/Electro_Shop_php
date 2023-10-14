@@ -9,6 +9,12 @@
                     foreach ($listCategories as $category) {
                         extract($category);
                         $linkdm = "index.php?act=shop-page&category_id=" . $category_id;
+                        $current_product = 0;
+                        foreach ($count_products as $quantity) {
+                            if ($category_id == $quantity[0]) {
+                                $current_product = $category_id;
+                            }
+                        }
 
                         echo '
                                 <a href="' . $linkdm . '" class="item">
@@ -17,7 +23,7 @@
                                     </div>
                                     <div class="item-text text-center">
                                         <div class="title">' . $category_name . '</div>
-                                        <div class="quantity">' . ($count_products[$category_id - 1][0]) . ' products</div>
+                                        <div class="quantity">' .$current_product. ' products</div>
                                     </div>
                                 </a>
                             ';

@@ -7,8 +7,9 @@
   --color-warning: #f7d060;
   --color-white: #ffffff;
   --color-info-dark: #7d8da1;
-  --color-dark: #363949;
+  --color-dark: #242424;
   --color-light: #eaeaea;
+  --color-light-2: #eaeaea;
   --color-dark-variant: #677483;
   --color-background: #f2efe9;
   --color-title: #fed700;
@@ -22,7 +23,7 @@
   --card-padding: 1.8rem;
   --padding-1: 1.2rem;
 
-  --box-shadow: 0 2rem 3rem var(--color-light);
+  --box-shadow: 0 2rem 3rem var(--color-light-2);
 }
 
 .dark-mode-variables {
@@ -33,11 +34,12 @@
   --color-white: #202528;
   --color-dark: #edeffd;
   --color-dark-variant: #a3bdcc;
+  --color-light-2: rgba(0, 0, 0, 0.3);
   --color-light: #495057;
   --color-linear: #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4,
     #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1;
 
-  --box-shadow: 0 2rem 3rem var(--color-light);
+  --box-shadow: 0 2rem 3rem var(--color-light-2);
 }
 
 * {
@@ -62,7 +64,7 @@ body {
   transition: 0.5s linear;
 }
 
-#wrapper {
+#wrapper-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -492,6 +494,42 @@ button {
   scale: 0.7;
 }
 
+/*profile*/
+
+header .header-bottom .profile {
+  display: flex;
+  gap: 2rem;
+  text-align: right;
+}
+
+header .header-bottom .profile .info {
+  font-size: 14px;
+  color: var(--color-dark);
+}
+
+header .header-bottom .profile .info b {
+  font-size: 15px;
+}
+
+header .header-bottom .profile-photo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+header .header-bottom .profile-photo img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+header .header-bottom .profile-photo ion-icon {
+  font-size: 39px;
+  fill: var(--color-dark);
+}
+
 /* ======Category - Slide show======== */
 
 /*Category*/
@@ -807,9 +845,10 @@ footer .footer-widgets {
 
 /* Star rating*/
 
-.rating {
+body .rating {
   display: inline-block;
   opacity: 1;
+  margin-bottom: 0;
 }
 
 .rating input {
@@ -2374,11 +2413,13 @@ footer .copyright-bar {
 
 .product-tabs-wrapper .review-form .comment-form-rating {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin: 20px 0;
 }
 
 .product-tabs-wrapper .review-form .title {
+  width: fit-content;
   font-size: 14px;
   font-weight: 550;
   margin-right: 20px;
@@ -2638,7 +2679,7 @@ footer .copyright-bar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   padding: 50px 40px 20px 40px;
   background-color: #ffffff;
   box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
@@ -2688,6 +2729,34 @@ footer .copyright-bar {
   color: #8b8e98;
 }
 
+.flex-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.flex-row > div {
+  display: flex;
+  gap: 4px;
+}
+
+.flex-row > div > label {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+}
+
+.span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #2d79f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .input_container {
   width: 100%;
   height: fit-content;
@@ -2701,7 +2770,7 @@ footer .copyright-bar {
   min-height: 21px;
 }
 
-.icon {
+.form_container .icon {
   font-size: 20px;
   width: 20px;
   position: absolute;
@@ -2779,6 +2848,10 @@ footer .copyright-bar {
   cursor: pointer;
 }
 
+.sign-in_apl ion-icon {
+  font-size: 20px;
+}
+
 .separator {
   width: 100%;
   display: flex;
@@ -2820,7 +2893,8 @@ footer .copyright-bar {
   position: relative;
 }
 
-.title {
+#sign-in p.title,
+.form p.title {
   font-size: 28px;
   color: royalblue;
   font-weight: 600;
@@ -2831,7 +2905,10 @@ footer .copyright-bar {
   padding-left: 30px;
 }
 
-.title::before,.title::after {
+#sign-in p.title::before,
+#sign-in p.title::after,
+.form p.title::before,
+.form p.title::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -2841,19 +2918,22 @@ footer .copyright-bar {
   background-color: royalblue;
 }
 
-.title::before {
+#sign-in p.title::before,
+.form p.title::before {
   width: 18px;
   height: 18px;
   background-color: royalblue;
 }
 
-.title::after {
+#sign-in p.title::after,
+.form p.title::after {
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
 }
 
-.message, .signin {
+.message,
+.signin {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
   text-align: center;
@@ -2923,7 +3003,7 @@ footer .copyright-bar {
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  transform: .3s ease;
+  transform: 0.3s ease;
 }
 
 .submit:hover {
@@ -2940,4 +3020,284 @@ footer .copyright-bar {
     transform: scale(1.8);
     opacity: 0;
   }
+}
+
+/* Form category */
+.custum-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--color-dark);
+  background-color: transparent;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+}
+
+.custum-file-upload .img-upload {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.custum-file-upload .img-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: var(--color-dark-variant);
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-info-dark);
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload input {
+  display: none;
+}
+
+.product-form,
+.category-form {
+  margin: 40px 0;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-2);
+  padding: var(--card-padding);
+}
+
+.product-form .title,
+.category-form .title {
+  font-weight: bold;
+  color: var(--color-title-2);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-form .form-group label,
+.category-form .form-group label {
+  color: var(--color-dark);
+  font-weight: 550;
+  padding-bottom: 4px;
+}
+
+.product-form .form-group input,
+.category-form .form-group input {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 12px;
+  border-radius: 7px;
+  outline: none;
+  color: var(--color-dark);
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px var(--color-light-2))
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  background-color: transparent;
+}
+
+.product-form .form-group input:focus,
+.category-form .form-group input:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px var(--color-dark);
+  background-color: transparent;
+}
+
+.form-group span {
+  min-height: 21px;
+}
+
+.product-form input.btn,
+.category-form input.btn {
+  font-size: 14px;
+  font-weight: 550;
+  margin-right: 8px;
+}
+
+/* categories list table */
+
+.categories-list-table {
+  margin: 40px 0;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-2);
+  min-height: 590px;
+}
+
+.categories-list-table .title {
+  font-weight: bold;
+  color: var(--color-title-2);
+}
+
+.categories-list-table td img {
+  width: 60px;
+}
+
+.categories-list-table input[name="show-all"],
+.categories-list-table .btn.add-new,
+.categories-list-table button.btn {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+/*admin Search category */
+
+.categories-list-table .search {
+  display: inline-block;
+  position: relative;
+  margin: 0 16px;
+}
+
+.categories-list-table .search input[type="text"] {
+  min-width: 350px;
+  padding: 8px 10px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.categories-list-table .search input[type="submit"] {
+  background-color: #4e99e9;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 8px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: 0.9s ease;
+}
+
+.categories-list-table .search input[type="submit"]:hover {
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+  background-color: blue;
+}
+
+/*Forgot password*/
+
+.form-container {
+  max-width: 400px;
+  background-color: #fff;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #212121;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .logo-container {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.form-container .form-forgot {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #1778f2;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  color: #fff;
+  background-color: #212121;
+  border: none;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin: 12px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #313131;
+}
+
+.form-container .link {
+  color: #1778f2;
+  text-decoration: none;
+}
+
+.form-container .signup-link {
+  align-self: center;
+  font-weight: 500;
+}
+
+.form-container .signup-link .link {
+  font-weight: 400;
+}
+
+.form-container .link:hover {
+  text-decoration: underline;
 }

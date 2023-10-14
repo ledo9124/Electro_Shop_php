@@ -17,7 +17,7 @@
     />
   </head>
   <body>
-    <div id="wrapper">
+    <div id="wrapper-form">
       <form class="form" id="register">
         <p class="title">Register</p>
         <p class="message">Signup now and get full access to our website.</p>

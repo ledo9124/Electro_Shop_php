@@ -40,8 +40,12 @@
 
 
                     $list_comments = loadall_comment($product_id);
-
+                    
                 };
+
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    # code...
+                }
 
 
                 include './view/product-page.php';
@@ -54,6 +58,7 @@
         $count_products = count_category();
         $top_10_product = loadall_product_top(10);
         $new_10_product = loadall_product_new(10);
+
 
         include './view/category_slider.php';
         include './view/home-page.php';

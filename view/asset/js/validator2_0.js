@@ -49,41 +49,49 @@ function Validator(formSelector) {
 
     //Tạo class khi nhập sai và đúng dữ liệu
     const invalidInputStyle = `
-    .form-group.invalid input{
+
+    form .form-group.invalid textarea,
+    form .form-group.invalid input{
         background-color: #ff00001c;
         border: 2px solid #ff0000;
         transition: .3s;
     }
 
-    .form-group.invalid input:focus,
-    .form-group.invalid input:hover {
+    form .form-group.invalid textarea:focus,
+    form .form-group.invalid textarea:hover,
+    form .form-group.invalid input:focus,
+    form .form-group.invalid input:hover {
         background-color: transparent;
         border-color: #ff0000;
         box-shadow: inset 2px 2px 2px #ff00001c,
                     inset -2px -2px 2px #ff00001c;
     }
 
-    .form-group.invalid .form-message {
+    form .form-group.invalid .form-message {
         color: #ff0000;
     }
     `;
 
     const validInputStyle = `
-    .form-group.valid input{
+
+    form .form-group.valid textarea,
+    form .form-group.valid input{
         background-color: #0dff921c;
         border: 2px solid #0dff92;
         transition: .3s;
     }
 
-    .form-group.valid input:focus,
-    .form-group.valid input:hover {
+    form .form-group.valid textarea:focus,
+    form .form-group.valid textarea:hover,
+    form .form-group.valid input:focus,
+    form .form-group.valid input:hover {
         background-color: transparent;
         border-color: #0dff92;
         box-shadow: inset 2px 2px 2px #0dff921c,
                     inset -2px -2px 2px #0dff921c;
     }
 
-    .form-group.valid .form-message {
+    form .form-group.valid .form-message {
         color: #03a724;
     }`;
 
@@ -144,6 +152,14 @@ function Validator(formSelector) {
             return function (value) {
                 return value === formElement.querySelector(comfirm).value ? undefined : 'Vui lòng nhập đúng dữ liệu!';
             }
+        },
+
+        isFile: function (file) {
+            if (!file) {
+                return 'Vui lòng chọn một tệp hình ảnh!';
+            }
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            return allowedTypes.includes(file.type) ? undefined : 'Chỉ chấp nhận tệp hình ảnh có định dạng JPEG, PNG hoặc GIF!';
         }
     };
 
@@ -151,6 +167,7 @@ function Validator(formSelector) {
     if (formElement) {
         // Lấy ra các rules của từng input 
         let inputs = formElement.querySelectorAll('[name][rules]');
+
         for (var input of inputs) {
 
             let rules = input.getAttribute('rules').split('|');
@@ -183,16 +200,20 @@ function Validator(formSelector) {
 
                 rules.some((rule , index) => {
                     switch (event.target.type) {
-                        case 'radio':
-                        case 'checkbox':
-                            errorMessage = rules[index](
-                                formElement.querySelector('#' + event.target.id + ':checked') ? 'true' : ''
-                            );
+
+                        //Error 
+
+                        // case 'radio':
+                        // case 'checkbox':
+                        //     console.log(formElement.querySelector( 'input[type=radio]' + '#' + event.target.id + ':checked'));
+                        //     errorMessage = rules[index](
+                        //         formElement.querySelector( 'input[type=radio]' + '#' + event.target.id + ':checked') ? 'true' : ''
+                        //     );
+                        //     break;
+                        
+                        case 'file':
+                            errorMessage = rules[index](event.target.files[0]);
                             break;
-                        
-                        
-                        
-                            
                         default:
                             errorMessage = rules[index](event.target.value);
                     };
@@ -251,7 +272,6 @@ function Validator(formSelector) {
 
     // Xử lý hành vi submit của form
     formElement.onsubmit = function(event) {
-        event.preventDefault();
 
         let inputs = formElement.querySelectorAll('[name][rules]');
         let isValid = true;
@@ -261,42 +281,7 @@ function Validator(formSelector) {
             };
         };
 
-        if (isValid) {
-
-            if (typeof _This.onSubmit === 'function') {
-
-                let enableInputs = formElement.querySelectorAll('[name]');
-                let formValues = Array.from(enableInputs).reduce(function(values , input){
-
-                    switch (input.type) {
-                        case 'radio':
-                            values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
-                            break;
-                        case 'checkbox':
-                            if (typeof values[input.name] === 'undefined') {
-                                values[input.name] = '';
-                            }
-                            if(!input.matches(':checked')) return values;
-                            if(!Array.isArray(values[input.name])) {
-                                values[input.name] = [];
-                            }
-                            values[input.name].push(input.value);
-                            break;
-                        case 'file':
-                            values[input.name] = input.files;
-                            break;
-                        default: 
-                            values[input.name] = input.value;
-                    }
-                    return values;
-                }, {});
-
-                _This.onSubmit(formValues);
-            }else {
-                formElement.submit();
-            }
-
-        };
+        return isValid;
 
     };
 

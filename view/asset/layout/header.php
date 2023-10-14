@@ -17,6 +17,7 @@
     />
   </head>
   <body>
+    <div id="toast"></div>
     <div id="wapper">
       <header>
         <div class="container">
@@ -105,7 +106,7 @@
               </div>
 
               <ul
-                class="col-auto nav justify-content-center align-items-center menu-main"
+                class="col nav justify-content-center align-items-center menu-main"
               >
                 <li><a href="index.php">Home</a></li>
                 <li><a href="index.php?act=shop-page">Shop</a></li>
@@ -166,7 +167,7 @@
               </ul>
 
               <div
-                class="col nav align-items-center justify-content-between account-login"
+                class="col-auto nav align-items-center justify-content-between account-login"
               >
                 <a href="./view/login/sign-in.php">
                   <button class="signIn">
@@ -177,6 +178,17 @@
                   <button class="button SignUp">Sign Up</button>
                 </a>
               </div>
+
+              <!-- <div class="col-auto profile">
+                <div class="info">
+                  <p class="m-0">Hey, <b>Dole</b></p>
+                  <div class="text-role">User</div>
+                </div>
+                <div class="profile-photo">
+                  <ion-icon name="person-circle-outline"></ion-icon>
+                </div>
+              </div> -->
+
             </div>
           </div>
         </div>
