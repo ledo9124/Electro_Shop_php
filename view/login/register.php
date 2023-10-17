@@ -116,7 +116,7 @@
         <div class="w-100 form-group">
           <input type="submit" class="submit" name="submit" value="Submit">
           <span class="form-message text-danger"><?=$messageLogin;?></span>
-      </div>
+        </div>
         <p class="signin">Already have an acount ? <a href="./sign-in.php">Signin</a></p>
       </form>
     </div>

@@ -59,16 +59,16 @@ function sendMail($email) {
     if ($account != false) {
         sendMailPass($email, $account['user_name'], $account['password']);
 
-        return "gui email thanh cong";
+        return true;
     } else {
-        return "Email bạn nhập ko có trong hệ thống";
+        return false;
     }
 }
 
 function sendMailPass($email, $username, $pass) {
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+    require '../../PHPMailer/src/Exception.php';
+    require '../../PHPMailer/src/PHPMailer.php';
+    require '../../PHPMailer/src/SMTP.php';
 
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
@@ -79,7 +79,7 @@ function sendMailPass($email, $username, $pass) {
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'leminhdo9124@gmail.com';                     //SMTP username
-        $mail->Password   = 'ltvatmartwztcyng';                    //SMTP password
+        $mail->Password   = 'ijjjajazugceowli';                    //SMTP password
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
