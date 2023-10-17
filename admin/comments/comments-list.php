@@ -36,7 +36,6 @@
                             <td>' . $comment_rating . '</td>
                             <td>' . $comment_date . '</td>
                             <td>
-                                <a href="index.php?act=comment-edit&comment_id=' . $comment_id . '" class="btn btn-warning">Edit</a>
                                 <a href="index.php?act=comment-delete&comment_id=' . $comment_id . '" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete?\')">Delete</a>
                             </td>
                         ';
@@ -44,7 +43,7 @@
                 ;
             } else {
                 echo "<tr>
-                            <td colspan='5' class='text-message text-danger'>comment not found is '$value_search' !</td>
+                            <td colspan='5' class='text-message text-danger'>comment not found is '$user_name' !</td>
                         </tr>
                     ";
             }

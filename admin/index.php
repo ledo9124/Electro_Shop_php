@@ -5,9 +5,13 @@
     include '../model/category.php';
     include '../model/comment.php';
     include '../model/client.php';
+    include '../model/statistical.php';
     include '../global.php';
     
-    
+    $client = '';
+    if (isset($_SESSION['account']) && ($_SESSION['account'])) {
+        $client = loadall_client('', $_SESSION['account']);
+    }
     include './header.php';
     
     if (isset($_GET['act']) && ($_GET['act'] != '')) {
@@ -72,8 +76,8 @@
                 if (isset($_GET['category_id']) && ($_GET['category_id'])) {
                     hard_delete_category($_GET['category_id']);
                 }
-                $listCategories = loadall_category();
-                include './categories/categories-list.php';
+
+                echo '<script type="text/javascript">window.location.href = "./index.php?act=categories-list";</script>';
                 break;
 
 
@@ -143,32 +147,75 @@
                 if (isset($_GET['product_id']) && ($_GET['product_id'])) {
                     hard_delete_product($_GET['product_id']);
                 }
-                $listCategories = loadall_category();
-                $listProducts = loadall_product();
-                include './products/products-list.php';
+
+                echo '<script type="text/javascript">window.location.href = "./index.php?act=products-list";</script>';
                 break;
             
 
 
 
             case 'comments-list':
-                $product_id = 0;
                 $user_name = '';
                 if (isset($_POST['submit']) && ($_POST['submit'])) {
                     $user_name = $_POST['search'];
                 }
 
-                $listComments = loadall_comment($product_id , $user_name);
+                $listComments = loadall_comment(0 , $user_name);
+
                 include './comments/comments-list.php';
+                break;
+            case 'comment-delete':
+                if (isset($_GET['comment_id']) && ($_GET['comment_id'])) {
+                    hard_delete_comment($_GET['comment_id']);
+                }
+                
+                echo '<script type="text/javascript">window.location.href = "./index.php?act=comments-list";</script>';
                 break;
 
 
 
             case 'clients-list': 
+                $user_name = '';
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $user_name = $_POST['search'];
+                }
 
-
-                $listClients = loadall_client($user_name = '');
+                $listClients = loadall_client($user_name , '' , true);
                 include './clients/clients-list.php';
+                break;
+            case 'client-delete':
+                if (isset($_GET['client_id']) && ($_GET['client_id'])) {
+                    hard_delete_client($_GET['client_id']);
+                    hard_delete_comment(0 , $_GET['client_id']);                 
+                }
+                
+                echo '<script type="text/javascript">window.location.href = "./index.php?act=clients-list";</script>';
+                break;
+
+            
+            case 'statistical-list':
+                $category_name = '';
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $category_name = $_POST['search'];
+                }
+
+                $listStatistical =  load_statistical_category_product($category_name);
+
+
+                include './statistical/statistical-list.php';
+                break;
+            case 'chart':
+
+                $listStatistical =  load_statistical_category_product();
+
+                include './statistical/chart.php';
+                break;
+
+            
+
+            case 'logout':
+                logout();
+                echo '<script type="text/javascript">window.location.href = "../index.php";</script>';
                 break;
             
         }

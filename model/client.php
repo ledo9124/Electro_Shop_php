@@ -2,40 +2,54 @@
 session_start();
 
 //dang ky
-function insert_taikhoan($email, $user, $pass)
+function insert_account($email, $user, $pass)
 {
-    $sql = "INSERT INTO `taikhoan` ( `email`, `user`, `pass`) VALUES ( '$email', '$user','$pass'); ";
+    $sql = "INSERT INTO `client` ( `client_email`, `user_name`, `password`) VALUES ( '$email', '$user','$pass'); ";
     pdo_execute($sql);
 }
 
-function dangnhap($user, $pass)
+function signin($client_email, $pass , $remember = false)
 {
-    $sql = "SELECT * FROM taikhoan WHERE user='$user' and pass='$pass'";
-    $taikhoan = pdo_query_one($sql);
+    $sql = "SELECT * FROM client WHERE client_email='$client_email' and password='$pass'";
+    $account = pdo_query_one($sql);
 
-    if ($taikhoan != false) {
-        $_SESSION['user'] = $user;
-    } else {
-        return "Thông tin tài khoản sai";
+    if ($account != false) {
+        $_SESSION['account'] = $client_email;
+        return 'Logged in successfully!';
+    }else {
+        return 'Account or password is incorrect!';
     }
 }
 
-function dangxuat()
+function logout()
 {
-    if (isset($_SESSION['user'])) {
-        unset($_SESSION['user']);
+    if (isset($_SESSION['account'])) {
+        unset($_SESSION['account']);
     }
 }
 
-function loadall_client($user_name = '')
+function loadall_client($user_name = '',$client_email='' , $client_role = false)
 {
     $sql = "select * from client where 1";
     if ($user_name != '') {
         $sql .= " and user_name like '%" . $user_name . "%'";
     }
+    if ($client_email != '') {
+        $sql .= " and client_email = '" . $client_email . "'";
+    }
+    if ($client_role) {
+        $sql .= " and client_role = 0";
+    }
     $sql .= " order by client_id asc";
-    $listCategories = pdo_query($sql);
-    return $listCategories;
+    $listClients = pdo_query($sql);
+    return $listClients;
+}
+
+
+function hard_delete_client($id)
+{
+    $sql = "DELETE FROM client WHERE client_id=" . $id;
+    pdo_execute($sql);
 }
 
 function sendMail($email) {

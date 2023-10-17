@@ -296,9 +296,8 @@
                             <div class="col-6 review-form">
                                 <div class="review-title">Add a review</div>
 
-                                <form action="index.php?act=product-page" method="post" id="comment-form" class="comment-form">
+                                <form action="index.php?act=product-page&idsp=<?=$product_id?>" method="post" id="comment-form" class="comment-form">
                                     <input type="hidden" name="product_id" value="<?=$product_sigle['product_id']?>">    
-                                    <input type="hidden" name="client_id" value="<?=$product_sigle['product_id']?>">    
 
                                     <div class="form-group comment-form-rating">
                                         <div class="title">Your Rating</div>
@@ -321,11 +320,28 @@
 
                                     <div class="form-group comment-form-comment">
                                         <div class="title">Your Review</div>
-                                        <textarea name="comment" cols="45" rows="2" rules="required"></textarea>
+                                        <?php 
+                                            if (!isset($_SESSION['account'])) {
+                                                echo '<textarea name="comment_content" cols="45" rows="2"></textarea>';
+                                            }else {
+                                                echo '<textarea name="comment_content" cols="45" rows="2" rules="required"></textarea>';
+                                            }
+                                        ?>
+                                        <!-- <textarea name="comment" cols="45" rows="2" rules="required"></textarea> -->
                                         <span class="form-message"></span>
                                     </div>
-
-                                    <input type="submit" name="submit" value="Add Review" />
+                                    
+                                    <div class="form-group">
+                                        <?php 
+                                            if (!isset($_SESSION['account'])) {
+                                                echo '<input type="submit" name="submit" value="Add Review"  onclick="return confirm(\'You need to log in to comment!\')"/>';
+                                            }else {
+                                                echo '<input type="submit" name="submit" value="Add Review" />';
+                                            }
+                                        ?>
+                                        <!-- <input type="submit" name="submit" value="Add Review" /> -->
+                                        <span class="form-message text-success"></span>
+                                    </div>
                                 </form>
                             </div>
                         </div>

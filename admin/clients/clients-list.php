@@ -1,8 +1,8 @@
 <div class="container categories-list-table p-4">
     <div class="row align-items-center">
-        <div class="col-6 h1 m-4 title">Comment</div>
+        <div class="col-6 h1 m-4 title">Client</div>
         <div class="col-auto search">
-            <form action="index.php?act=comments-list" method="post">
+            <form action="index.php?act=clients-list" method="post">
                 <input placeholder="Search..." type="text" name="search" />
                 <input type="submit" name="submit" value="Go">
             </form>
@@ -38,15 +38,14 @@
                             <td>' . $client_email . '</td>
                             <td>' . $password . '</td>
                             <td>
-                                <a href="index.php?act=client-edit&client_id=' . $client_id . '" class="btn btn-warning">Edit</a>
-                                 <a href="index.php?act=client-delete&client_id=' . $client_id . '" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete?\')">Delete</a>
+                                <a href="index.php?act=client-delete&client_id=' . $client_id . '" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete?\')">Delete</a>
                             </td>
                         ';
                 }
                 ;
             } else {
                 echo "<tr>
-                            <td colspan='5' class='text-message text-danger'>client not found is '$value_search' !</td>
+                            <td colspan='5' class='text-message text-danger'>client not found is '$user_name' !</td>
                         </tr>
                     ";
             }
@@ -67,14 +66,10 @@
     <div class="d-flex">
         <button class="btn btn-primary choose-all">Choose All</button>
         <button class="btn btn-danger deselect-all">Deselect All</button>
-        <form action="index.php?act=comments-list" method="post">
+        <form action="index.php?act=clients-list" method="post">
             <input class="btn btn-info" type="submit" name="show-all" value="Show all">
         </form>
     </div>
 
 
 </div>
-
-<script>
-    
-</script>

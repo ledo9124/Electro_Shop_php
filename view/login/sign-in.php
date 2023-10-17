@@ -12,8 +12,45 @@
 </head>
 
 <body>
+
+  <?php 
+
+    include '../../model/pdo.php';
+    include '../../model/client.php';
+
+    if (isset($_SESSION['account']) && ($_SESSION['account'])) {
+      $client = loadall_client('', $_SESSION['account']);
+      if ($client[0]['client_role'] == 0) {
+        header('location: ../../index.php');
+      }else {
+        header('location: ../../admin/index.php');
+      }
+      exit;
+    }
+
+    $messageLogin ='';
+    if (isset($_POST['submit']) && ($_POST['submit'])) {
+      $client_email = $_POST['email'];
+      $client_password = $_POST['password'];
+      $messageLogin = signin($client_email , $client_password);
+
+      if (isset($_SESSION['account']) && ($_SESSION['account'])) {
+        $client = loadall_client('', $_SESSION['account']);
+        if ($client[0]['client_role'] == 0) {
+          header('location: ../../index.php');
+        }else {
+          header('location: ../../admin/index.php');
+        }
+        exit;
+      }
+
+    }
+
+  
+  ?>
+
   <div id="wrapper-form">
-    <form class="form_container" id="sign-in">
+    <form action="./sign-in.php" method="post" class="form_container" id="sign-in">
       <!-- <div class="logo_container"></div> -->
       <div class="title_container">
         <p class="title">Login to your Account</p>
@@ -24,7 +61,7 @@
       <div class="input_container form-group">
         <label class="form-label mb-0" for="email_field">Email</label>
         <ion-icon class="icon" name="mail-outline"></ion-icon>
-        <input rules="required|email" placeholder="name@mail.com" title="Inpit title" name="user-name" type="text"
+        <input rules="required|email" placeholder="name@mail.com" title="Inpit title" name="email" type="text"
           class="input_field" id="email_field" />
         <span class="form-message"></span>
       </div>
@@ -46,9 +83,11 @@
         </a>
       </div>
 
-      <button title="Sign In" type="submit" class="sign-in_btn">
-        <span>Sign In</span>
-      </button>
+      <div class="w-100 form-group">
+        <input type="submit" name="submit" class="sign-in_btn" value="Sign In">
+        <span class="form-message text-danger"><?=$messageLogin;?></span>
+      </div>
+
       <p class="signin mb-0">Not a member yet ? <a href="./register.php">Register</a></p>
 
       <div class="separator">

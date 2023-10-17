@@ -12,7 +12,7 @@
                         $current_product = 0;
                         foreach ($count_products as $quantity) {
                             if ($category_id == $quantity[0]) {
-                                $current_product = $category_id;
+                                $current_product = $quantity[1];
                             }
                         }
 

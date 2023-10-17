@@ -1,71 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electronic Shop</title>
-    <link rel="stylesheet" href="./view/asset/css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
-    />
-  </head>
-  <body>
-    <div id="toast"></div>
-    <div id="wapper">
-      <header>
-        <div class="container">
-          <div class="header-top d-flex justify-content-between">
-            <ul class="nav pt-2 pb-2 menu-top-bar-left">
-              <li><a href="#">Welcome to Worldwide Electronic store</a></li>
-            </ul>
-            <ul class="nav pt-2 pb-2 menu-top-bar-right">
-              <li>
-                <a href="#"><i class="bi bi-geo-alt"></i> Store Locator</a>
-              </li>
-              <li>
-                <a href="#"><i class="bi bi-truck"></i> Track Your Oder</a>
-              </li>
-              <li>
-                <a href="#"><i class="bi bi-person"></i> My Account</a>
-              </li>
-            </ul>
-          </div>
 
-          <div class="header-bottom pt-2 pb-2">
-            <div class="row align-items-center">
-              <div class="col-auto logo">
-                <svg
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  width="175.748px"
-                  height="42.52px"
-                  viewBox="0 0 175.748 42.52"
-                  enable-background="new 0 0 175.748 42.52"
-                  class=""
-                >
-                  <ellipse
-                    class="ellipse-bg"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    fill="#FDD700"
-                    cx="170.05"
-                    cy="36.341"
-                    rx="5.32"
-                    ry="5.367"
-                  ></ellipse>
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    fill="#333E48"
-                    d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electronic Shop</title>
+  <link rel="stylesheet" href="./view/asset/css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+</head>
+
+<body>
+  <div id="toast"></div>
+  <div id="wapper">
+    <header>
+      <div class="container">
+        <div class="header-top d-flex justify-content-between">
+          <ul class="nav pt-2 pb-2 menu-top-bar-left">
+            <li><a href="#">Welcome to Worldwide Electronic store</a></li>
+          </ul>
+          <ul class="nav pt-2 pb-2 menu-top-bar-right">
+            <li>
+              <a href="#"><i class="bi bi-geo-alt"></i> Store Locator</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-truck"></i> Track Your Oder</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-person"></i> My Account</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="header-bottom pt-2 pb-2">
+          <div class="row align-items-center">
+            <div class="col-auto logo">
+              <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52"
+                enable-background="new 0 0 175.748 42.52" class="">
+                <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05"
+                  cy="36.341" rx="5.32" ry="5.367"></ellipse>
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48"
+                  d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
                       C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187
                       c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731
                       c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733
@@ -99,87 +75,101 @@
                       c3.222,0.079,4.966,1.708,6.632,3.668c1.328-1.059,2.529-1.948,3.9-2.99c0.416-0.315,1.076-0.688,1.227-1.072
                       c0.404-1.031-0.365-1.502-0.891-2.088c-2.543-2.835-6.66-5.377-11.704-5.137c-6.02,0.288-10.218,3.697-12.484,7.846
                       c-1.293,2.365-1.951,5.158-1.729,8.408c0.209,3.053,1.191,5.496,2.619,7.508c2.842,4.004,7.385,6.973,13.656,6.377
-                      c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z"
-                    class=""
-                  ></path>
+                      c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z" class=""></path>
+              </svg>
+            </div>
+
+            <ul class="col nav justify-content-center align-items-center menu-main">
+              <li><a href="index.php">Home</a></li>
+              <li><a href="index.php?act=shop-page">Shop</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+
+            <div class="col-auto search">
+              <input placeholder="Search..." type="text" />
+              <button type="submit">Go</button>
+            </div>
+
+            <div class="col-1 btn-toggle-dark-mode">
+              <label class="switch-name">
+                <input type="checkbox" class="checkbox" />
+                <div class="back"></div>
+                <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z">
+                  </path>
                 </svg>
-              </div>
+                <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path
+                    d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
+                  </path>
+                </svg>
+              </label>
+            </div>
 
-              <ul
-                class="col nav justify-content-center align-items-center menu-main"
-              >
-                <li><a href="index.php">Home</a></li>
-                <li><a href="index.php?act=shop-page">Shop</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-
-              <div class="col-auto search">
-                <input placeholder="Search..." type="text" />
-                <button type="submit">Go</button>
-              </div>
-
-              <div class="col-1 btn-toggle-dark-mode">
-                <label class="switch-name">
-                  <input type="checkbox" class="checkbox" />
-                  <div class="back"></div>
-                  <svg
-                    class="sun"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    <path
-                      d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"
-                    ></path>
-                  </svg>
-                  <svg
-                    class="moon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 384 512"
-                  >
-                    <path
-                      d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
-                    ></path>
-                  </svg>
-                </label>
-              </div>
-
-              <ul class="col-auto nav align-items-center menu-bottom-icons">
-                <li>
-                  <a href="#">
-                    <div class="uiverse">
-                      <span class="tooltip">Wishlist</span>
-                      <i class="bi bi-heart"></i>
+            <ul class="col-auto nav align-items-center menu-bottom-icons">
+              <li>
+                <a href="#">
+                  <div class="uiverse">
+                    <span class="tooltip">Wishlist</span>
+                    <i class="bi bi-heart"></i>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="uiverse">
+                    <span class="tooltip">Cart</span>
+                    <div class="nav align-items-center cart">
+                      <i class="bi bi-bag"></i>
+                      <div class="count-cart">0</div>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="uiverse">
-                      <span class="tooltip">Cart</span>
-                      <div class="nav align-items-center cart">
-                        <i class="bi bi-bag"></i>
-                        <div class="count-cart">0</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <?php
+            if (isset($client) && ($client)) {
+              $profile_photo = $client[0]['client_img'] ? '<img src="' . $img_path . $client[0]['client_img'] . '">' :
+                '<ion-icon name="person-circle-outline"></ion-icon>';
+
+              echo '
+                    <div class="overlay"></div>
+                    <div class="col-auto profile">
+                      <div class="info">
+                        <p class="m-0">Hey, <b>' . $client[0]['user_name'] . '</b></p>
+                        <div class="text-role">User</div>
                       </div>
+                      <div class="profile-photo">
+                        ' . $profile_photo . '              
+                      </div>
+                      <ul class="profile-navbar toTop">
+                        <li><a href="#">Your profile</a></li>
+                        <li><a href="index.php?act=logout"><ion-icon name="log-out-outline"></ion-icon> Logout</a></li>
+                      </ul>
                     </div>
-                  </a>
-                </li>
-              </ul>
+                  ';
 
-              <div
-                class="col-auto nav align-items-center justify-content-between account-login"
-              >
-                <a href="./view/login/sign-in.php">
-                  <button class="signIn">
-                    <span class="box"> Sign In </span>
-                  </button>
-                </a>
-                <a href="./view/login/register.php">
-                  <button class="button SignUp">Sign Up</button>
-                </a>
-              </div>
+            } else {
+              echo '
+                  <div class="col-auto nav align-items-center justify-content-between account-login">
+                    <a href="./view/login/sign-in.php">
+                      <button class="signIn">
+                        <span class="box"> Sign In </span>
+                      </button>
+                    </a>
+                    <a href="./view/login/register.php">
+                      <button class="button SignUp">Sign Up</button>
+                    </a>
+                  </div>
+                  ';
+            }
+            ?>
 
-              <!-- <div class="col-auto profile">
+
+
+            <!-- <div class="col-auto profile">
                 <div class="info">
                   <p class="m-0">Hey, <b>Dole</b></p>
                   <div class="text-role">User</div>
@@ -189,7 +179,7 @@
                 </div>
               </div> -->
 
-            </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>

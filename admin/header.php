@@ -113,7 +113,7 @@
                 <li><a href="index.php?act=products-list">Product</a></li>
                 <li><a href="index.php?act=comments-list">Comment</a></li>
                 <li><a href="index.php?act=clients-list">User</a></li>
-                <li><a href="#">Statistical</a></li>
+                <li><a href="index.php?act=statistical-list">Statistical</a></li>
               </ul>
 
               <div class="col-1 btn-toggle-dark-mode">
@@ -141,7 +141,46 @@
                 </label>
               </div>
 
-              <div class="col-auto profile">
+              <?php
+                if (isset($client) && ($client)) {
+                  $profile_photo = $client[0]['client_img'] ? '<img src="' . $img_path_admin . $client[0]['client_img'] . '">' :
+                    '<ion-icon name="person-circle-outline"></ion-icon>';
+
+                  echo '
+                        <div class="overlay"></div>
+                        <div class="col-auto profile">
+                          <div class="info">
+                            <p class="m-0">Hey, <b>' . $client[0]['user_name'] . '</b></p>
+                            <div class="text-role">Admin</div>
+                          </div>
+                          <div class="profile-photo">
+                            ' . $profile_photo . '              
+                          </div>
+                          <ul class="profile-navbar toTop">
+                            <li><a href="#">Your profile</a></li>
+                            <li><a href="index.php?act=logout"><ion-icon name="log-out-outline"></ion-icon> Logout</a></li>
+                          </ul>
+                        </div>
+                      ';
+
+                } else {
+                  echo '
+                      <div class="col-auto nav align-items-center justify-content-between account-login">
+                        <a href="./view/login/sign-in.php">
+                          <button class="signIn">
+                            <span class="box"> Sign In </span>
+                          </button>
+                        </a>
+                        <a href="./view/login/register.php">
+                          <button class="button SignUp">Sign Up</button>
+                        </a>
+                      </div>
+                      ';
+                }
+              ?>
+
+
+              <!-- <div class="col-auto profile">
                 <div class="info">
                   <p class="m-0">Hey, <b>Dole</b></p>
                   <div class="text-role">Admin</div>
@@ -149,7 +188,7 @@
                 <div class="profile-photo">
                   <ion-icon name="person-circle-outline"></ion-icon>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

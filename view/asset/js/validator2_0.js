@@ -182,6 +182,13 @@ function Validator(formSelector) {
                     ruleFunc = validatorRules[rule](ruleInfo[1]);
                 }
 
+                if (rule.includes('-')) {
+                    let ruleInfo = rule.split('-');
+                    rule = ruleInfo[0];
+
+                    ruleFunc = validatorRules[rule]('input.' + ruleInfo[1]);
+                }
+
                 if (Array.isArray(formRules[input.name])) {
                     formRules[input.name].push(ruleFunc);
                 }else {
@@ -237,7 +244,7 @@ function Validator(formSelector) {
                         }
                         invalidValue(formGroup);
                     } else {
-                        formMessage.innerText = 'Hợp lệ!';
+                        formMessage.innerText = 'Valid!';
                         validValue(formGroup);
                     };
                 };

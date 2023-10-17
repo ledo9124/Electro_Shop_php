@@ -18,7 +18,39 @@
   </head>
   <body>
     <div id="wrapper-form">
-      <form class="form" id="register">
+
+      <?php 
+        include '../../model/pdo.php';
+        include '../../model/client.php';
+
+        if (isset($_SESSION['account']) && ($_SESSION['account'])) {
+          $client = loadall_client('', $_SESSION['account']);
+          if ($client[0]['client_role'] == 0) {
+            header('location: ../../index.php');
+          }else {
+            header('location: ../../admin/index.php');
+          }
+          exit;
+        }
+
+        $messageLogin ='';
+        if (isset($_POST['submit']) && ($_POST['submit'])) {
+          $user_name = $_POST['firstname'] . $_POST['lastname'];
+          $client_email = $_POST['email'];
+          $client_password = $_POST['password'];
+          $client = loadall_client($user_name , $client_email);
+          if (empty($client)) {
+            insert_account($client_email , $user_name , $client_password);
+            header('location: ./sign-in.php');
+            exit;
+          }else {
+            $messageLogin = 'Account name or email already exists!';
+          }
+        }
+
+      ?>
+
+      <form action="./register.php" method="post" class="form" id="register">
         <p class="title">Register</p>
         <p class="message">Signup now and get full access to our website.</p>
         <div class="flex">
@@ -65,23 +97,26 @@
             name="password"
             placeholder=""
             type="password"
-            class="input"
+            class="input password"
           />
           <label>Password</label>
           <span class="form-message"></span>
         </div>
         <div class="form-group">
           <input
-            rules="required|confirm"
+            rules="required|comfirm-password"
             name="password-comfirm"
             placeholder=""
             type="password"
             class="input"
           />
-          <label>Confirm password</label>
+          <label>Comfirm password</label>
           <span class="form-message"></span>
         </div>
-        <button class="submit">Submit</button>
+        <div class="w-100 form-group">
+          <input type="submit" class="submit" name="submit" value="Submit">
+          <span class="form-message text-danger"><?=$messageLogin;?></span>
+      </div>
         <p class="signin">Already have an acount ? <a href="./sign-in.php">Signin</a></p>
       </form>
     </div>

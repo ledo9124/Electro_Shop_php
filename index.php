@@ -4,8 +4,20 @@
     include './model/category.php';
     include './model/product.php';
     include './model/comment.php';
+    include './model/client.php';
 
     include './global.php';
+    $client = '';
+    if (isset($_SESSION['account']) && ($_SESSION['account'])) {
+        $client = loadall_client('', $_SESSION['account']);
+        if ($client) {
+            if ($client[0]['client_role'] == 1) {
+                header('location: ./admin/index.php');
+                exit;
+            }
+        }
+    }
+
     include './view/asset/layout/header.php';
     $listCategories = loadall_category();
 
@@ -30,6 +42,23 @@
                 break;
 
             case 'product-page':
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    if (!isset($_SESSION['account'])) {
+                        echo '<script type="text/javascript">window.location.href = "./view/login/sign-in.php";</script>';
+                        exit;
+                    }else {
+                        $comment_content = $_POST['comment_content'];
+                        $product_id = $_POST['product_id'];
+                        $client = loadall_client('' , $_SESSION['account']);
+                        $client_id = $client[0]['client_id'];
+                        $comment_rating = $_POST['rating'];
+    
+                        insert_comment($comment_content , $product_id , $client_id , $comment_rating);
+                        echo '<script type="text/javascript">window.location.href = "./index.php?act=product-page&idsp='.$product_id.'";</script>';
+                        exit;
+                    }
+                }
+
                 $new_5_product = loadall_product_new(5);
                 if (isset($_GET['idsp'])) {
                     $product = loadone_product($_GET['idsp']);
@@ -41,24 +70,22 @@
 
                     $list_comments = loadall_comment($product_id);
                     
+
                 };
-
-                if (isset($_POST['submit']) && ($_POST['submit'])) {
-                    # code...
-                }
-
 
                 include './view/product-page.php';
                 break;
 
-            
+            case 'logout':
+                logout();
+                echo '<script type="text/javascript">window.location.href = "index.php";</script>';
+                break;
         }
 
     } else {
         $count_products = count_category();
         $top_10_product = loadall_product_top(10);
         $new_10_product = loadall_product_new(10);
-
 
         include './view/category_slider.php';
         include './view/home-page.php';

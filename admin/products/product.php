@@ -1,5 +1,3 @@
-
-
 <div class="container product-form mb-5">
     <div class="h1 m-5 title">Product</div>
 

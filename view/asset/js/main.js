@@ -352,6 +352,25 @@ if (fileUpImg) {
       }
     };
   });
-}
+};
 
+//Toogle profile navbar
+
+const profilePhoto = document.querySelector('header .profile-photo');
+
+if (profilePhoto) {
+  const profileNavbar = document.querySelector('header .profile-navbar');
+  profilePhoto.onclick = function() {
+    profileNavbar.classList.toggle('active');
+    if (profileNavbar.classList.contains('active')) {
+      document.querySelector('header .overlay').style.display = 'block';
+    }else {
+      document.querySelector('header .overlay').style.display = 'none';
+    }
+  };
+  document.querySelector('header .overlay').onclick = function() {
+    profileNavbar.classList.remove('active');
+    document.querySelector('header .overlay').style.display = 'none';
+  };
+}
 
