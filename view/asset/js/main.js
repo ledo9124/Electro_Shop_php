@@ -3,7 +3,16 @@ const btnDarkMode = document.querySelector(".btn-toggle-dark-mode input");
 
 if (btnDarkMode) {
   btnDarkMode.onclick = function () {
-    document.body.classList.toggle("dark-mode-variables");
+    if (btnDarkMode.checked) {
+      document.body.classList.add("dark-mode-variables");
+    }else {
+      document.body.classList.remove("dark-mode-variables");
+    }
+  };
+  if (btnDarkMode.checked) {
+    document.body.classList.add("dark-mode-variables");
+  }else {
+    document.body.classList.remove("dark-mode-variables");
   };
 }
 
@@ -340,7 +349,8 @@ if (fileUpImg) {
     item.onchange = function () {
       if (!item.getAttribute("rules")) {
         item.setAttribute("rules", "isFile");
-        new Validator("#form-category-edit");
+          
+        new Validator('#' + item.closest('form').id);
       }
       const elementFile = document.querySelector(".custum-file-upload");
       if (elementFile) {
@@ -348,6 +358,14 @@ if (fileUpImg) {
           <div class="img-upload"><img src="${URL.createObjectURL(
             item.files[0]
           )}"></div>
+        `;
+      }
+      const elementFile1 = document.querySelector("#profile-avatar .img");
+      if (elementFile1) {
+        elementFile1.innerHTML = `
+          <img src="${URL.createObjectURL(
+            item.files[0]
+          )}">
         `;
       }
     };

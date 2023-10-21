@@ -8,6 +8,18 @@ function insert_account($email, $user, $pass)
     pdo_execute($sql);
 }
 
+function update_account($email, $user, $pass)
+{
+    $sql = "UPDATE `client` SET `user_name`='$user',`password`='$pass',`client_email`='$email' WHERE `client_email`='$email'";
+    pdo_execute($sql);
+}
+
+function update_account_avater($email , $img)
+{
+    $sql = "UPDATE `client` SET `client_img`='$img' WHERE `client_email`='$email'";
+    pdo_execute($sql);
+}
+
 function signin($client_email, $pass , $remember = false)
 {
     $sql = "SELECT * FROM client WHERE client_email='$client_email' and password='$pass'";

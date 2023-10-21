@@ -75,6 +75,7 @@
             case 'category-delete':
                 if (isset($_GET['category_id']) && ($_GET['category_id'])) {
                     hard_delete_category($_GET['category_id']);
+                    hard_delete_product(0 , $category_id);
                 }
 
                 echo '<script type="text/javascript">window.location.href = "./index.php?act=categories-list";</script>';
@@ -146,6 +147,7 @@
             case 'product-delete':
                 if (isset($_GET['product_id']) && ($_GET['product_id'])) {
                     hard_delete_product($_GET['product_id']);
+                    hard_delete_comment(0 , 0 , $_GET['product_id']);
                 }
 
                 echo '<script type="text/javascript">window.location.href = "./index.php?act=products-list";</script>';

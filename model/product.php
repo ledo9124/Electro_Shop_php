@@ -62,10 +62,27 @@ function update_product($id, $tensp, $giasp, $mota, $hinh, $iddm)
     pdo_execute($sql);
 }
 
-// Câu truy vấn xóa cứng
-function hard_delete_product($id)
+function update_product_view($id ,$product_view)
 {
-    $sql = "DELETE FROM product WHERE product_id=" . $id;
+ 
+    $sql = "UPDATE `product` SET `product_view` = '{$product_view}' WHERE `product`.`product_id` = $id";
+
+    pdo_execute($sql);
+}
+
+// Câu truy vấn xóa cứng
+function hard_delete_product($id = 0 , $category_id = 0)
+{
+    $sql = "DELETE FROM product WHERE 1";
+
+    if ($id > 0) {
+        $sql .= ' and product.product_id ='. $id;
+    }
+
+    if ($category_id > 0) {
+        $sql .= ' and product.category_id ='. $category_id;
+    }
+
     pdo_execute($sql);
 }
 

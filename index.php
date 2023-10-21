@@ -52,7 +52,7 @@
                         $client = loadall_client('' , $_SESSION['account']);
                         $client_id = $client[0]['client_id'];
                         $comment_rating = $_POST['rating'];
-    
+                        
                         insert_comment($comment_content , $product_id , $client_id , $comment_rating);
                         echo '<script type="text/javascript">window.location.href = "./index.php?act=product-page&idsp='.$product_id.'";</script>';
                         exit;
@@ -66,8 +66,8 @@
                     $related_product = load_product_related($product_id , $category_id);
                     
                     $product_sigle = loadone_product($product_id);
-
-
+                    $product_view = $product_sigle['product_view']+1;
+                    update_product_view($_GET['idsp'] , $product_view);
                     $list_comments = loadall_comment($product_id);
                     
 
@@ -75,6 +75,36 @@
 
                 include './view/product-page.php';
                 break;
+
+
+            case 'profile':
+                
+                include './view/profile.php';
+                break;
+            case 'profile-update':
+                if (isset($_POST['avatar']) && ($_POST['avatar'])) {
+                    $client_img = $_FILES['file']['name'];
+                    $target_dir = './uploads/';
+                    $target_file = $target_dir.basename($_FILES['file']['name']);
+                    if (move_uploaded_file($_FILES['file']['tmp_name'] , $target_file)) {
+                    }
+
+                    update_account_avater($client[0]['client_email'] , $client_img);
+                    echo '<script type="text/javascript">window.location.href = "./index.php?act=profile";</script>';
+                    exit;
+                }
+
+                if (isset($_POST['submit']) && ($_POST['submit'])) {
+                    $user_name = $_POST['user_name'];
+                    $client_email = $_POST['email'];
+                    $client_password = $_POST['password'];
+
+                    update_account( $client_email,$user_name, $client_password);
+                    echo '<script type="text/javascript">window.location.href = "./index.php?act=profile";</script>';
+                    exit;
+                }
+                break;
+
 
             case 'logout':
                 logout();

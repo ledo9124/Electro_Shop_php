@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
 </head>
 
-<body>
-  <div id="toast"></div>
+
+
+<body >
   <div id="wapper">
     <header>
       <div class="container">
@@ -93,7 +94,7 @@
 
             <div class="col-1 btn-toggle-dark-mode">
               <label class="switch-name">
-                <input type="checkbox" class="checkbox" />
+                <input type="checkbox" class="checkbox"/>
                 <div class="back"></div>
                 <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
@@ -145,7 +146,7 @@
                         ' . $profile_photo . '              
                       </div>
                       <ul class="profile-navbar toTop">
-                        <li><a href="#">Your profile</a></li>
+                        <li><a href="index.php?act=profile">Your profile</a></li>
                         <li><a href="index.php?act=logout"><ion-icon name="log-out-outline"></ion-icon> Logout</a></li>
                       </ul>
                     </div>

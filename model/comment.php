@@ -38,12 +38,16 @@ function insert_comment($comment_content, $product_id , $client_id , $comment_ra
     pdo_execute($sql);
 }
 
-function hard_delete_comment($comment_id=0 , $client_id=0)
+function hard_delete_comment($comment_id=0 , $client_id=0 , $product_id= 0)
 {
     $sql = "DELETE FROM comment WHERE 1";
 
     if ($comment_id > 0 ) {
         $sql .= ' and comment.comment_id ='. $comment_id;
+    }
+    
+    if ($product_id > 0 ) {
+        $sql .= ' and comment.product_id ='. $product_id;
     }
 
     if ($client_id > 0 ) {
